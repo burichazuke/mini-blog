@@ -1,0 +1,25 @@
+
+  <div class="col s12 center">
+    <div class="card hoverable">
+      <div class="card-image">
+        <%= image_tag "#{article.image}" %>
+        <span class="card-title"><%= article.title %></span>
+      </div>
+      <div class="card-content">
+        <p><%= article.text %></p>
+      </div>
+      
+      <div class="card-content">
+      <% if user_signed_in?%>
+        <% if current_user.id == article.user.id %>
+        
+          <%= link_to "edit", edit_article_path(article.id), class: "btn #ffab40 orange accent-2" %>
+          <%= link_to "delete", article_path(article.id), method: :delete, class: "btn #ffab40 orange accent-2"%>
+        
+        <%end%>
+      <%end%>  
+        <p id="post_by"><%= "posted by #{article.user.name}" %></p>
+      </div>
+      
+    </div>
+  </div>

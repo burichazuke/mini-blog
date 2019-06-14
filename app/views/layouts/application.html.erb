@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MiniBlog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <!-- Compiled and minified CSS -->
+    
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <nav class="#ffab40 orange accent-2">
+        <div class="nav-wrapper">
+
+          <%= link_to "MINI-BLOG", root_path, class: "brand-logo" %>
+
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            
+            <% if user_signed_in? %>
+            <li><%= link_to "新規投稿", new_article_path %></li>
+            
+            <li><%= link_to "サインアウト", destroy_user_session_path, method: :delete %></li>
+            <%else%>
+            <li><%= link_to "サインイン", new_user_session_path %></li>
+            <li><%= link_to "新規登録", new_user_registration_path %></li>
+            <%end%>
+          </ul>
+        </div>
+      </nav>
+    </header>  
+    <%= yield %>
+  </body>
+</html>

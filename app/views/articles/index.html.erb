@@ -1,0 +1,84 @@
+
+
+
+
+
+<!-- Page Layout here -->
+<div class="row">
+
+  <div class="col s3">
+    <!-- Grey navigation panel -->
+  <div class="container" id="sider" >
+  <!-- Page Content goes here -->
+  <div class="articles">
+    <div class="row">
+      <% if user_signed_in? %>
+      <div class="col s12 center">
+        <div class="card">
+            <ul class="collapsible">
+              <li>
+                <div class="collapsible-header">
+                  <%= current_user.name %>
+                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+              </li>
+              <li>
+                <div class="collection">
+                  <% @users.each do |user| %>
+                  <%= link_to user.name, user_path(user), class: "collection-item"%>
+
+                  <% end %>
+                </div>
+              </li>
+            </ul>
+        </div>
+      </div>
+      <%end%>
+    </div>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="col s6">
+    <!-- Teal page content  -->
+    <div class="container">
+    <!-- Page Content goes here -->
+      <div class="articles">
+        <div class="row">
+        <%= render @articles %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="col s3", id="my">
+    <div class="container">
+      <div class="row">
+      <% if user_signed_in?%>
+        <div class="col s12 center">
+          <div class="card">
+            <% unless @article == nil %>
+            <div class="card-image">
+              <%= image_tag "#{@article.image}"  %>
+
+            </div>
+            <%end%>
+            <div class="card-panel hoverable">
+              <%= link_to "マイページ", user_path(current_user.id) %>
+            </div>
+            
+          </div>
+        </div> 
+      <%end%>    
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
